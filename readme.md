@@ -30,6 +30,6 @@ Install TypeScript globally using this command:
 # References
 * https://www.typescriptlang.org/docs/handbook/react-&-webpack.html (Get familiar with TS) 
 * https://github.com/mobxjs/mobx-react-typescript-boilerplate (A quick start)
-* http://blog.tomduncalf.com/posts/setting-up-typescript-and-react/#adding-hot-module-reloading (A comprehensive reference)
+* http://blog.tomduncalf.com/posts/setting-up-typescript-and-react/#adding-hot-module-reloading (A comprehensive reference and most of the config used from this)
 * TBA
 
