@@ -1,40 +1,39 @@
-var path = require('path');
 var webpack = require('webpack');
-
-var onlyServer = 'webpack/hot/only-dev-server';
-var mwClient = 'webpack-hot-middleware/client';
-var entryFile = path.join(__dirname, '/src/index.tsx');
+var path = require('path');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
-    devtool: "source-map",
-    // entry: [
-    //     'webpack-dev-server/client?http://localhost:3000',
-    //     './src/index'
-    // ],
-    // entry: [
-    //     'webpack-dev-server/client?http://localhost:3000',
-    //     'webpack/hot/only-dev-server',
-    //     './src/index'
-    // ],
-    entry: [entryFile, mwClient, entryFile],
+    devtool: 'source-map',
+    entry: [
+        // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        'index.tsx'
+    ],
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: 'http://localhost:3000/'
+        filename: 'app.js',
+        publicPath: '/dist',
+        path: path.resolve('dist')
     },
     resolve: {
-        extensions: ['', '.js', '.ts', '.tsx']
+        extensions: ['', '.ts', '.tsx', '.js', '.jsx'],
+        modulesDirectories: ['src', 'node_modules']
     },
     module: {
+
         preLoaders: [
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js$/, loader: "source-map-loader" }
+            {test: /\.js$/, loader: "source-map-loader"}
         ],
 
-        loaders: [{
-            test: /\.tsx?$/,
-            loaders: ['react-hot', 'awesome-typescript-loader'],
-            include: path.join(__dirname, 'src')
-        }]
-    }
+        loaders: [
+            {test: /\.tsx?$/, loaders: ['babel', 'awesome-typescript-loader']}
+        ]
+    },
+    plugins: [
+        // Add the Webpack HMR plugin so it will notify the browser when the app code changes
+        new webpack.HotModuleReplacementPlugin(),
+        new WebpackNotifierPlugin({alwaysNotify: true})
+    ]
 };

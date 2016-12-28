@@ -1,5 +1,6 @@
 dist
 node_modules
+ts-build
 .vscode
 .idea
 *.iml
