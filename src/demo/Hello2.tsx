@@ -6,6 +6,6 @@ export interface Hello2Props { compiler: string; framework: string; }
 // State is never set so we use the 'undefined' type.
 export default class Hello2 extends React.Component<Hello2Props, {}> {
     render() {
-        return <h2>Helloss from {this.props.compiler} and {this.props.framework}!</h2>;
+        return <h2>Hello from {this.props.compiler} and {this.props.framework}!</h2>;
     }
 }
