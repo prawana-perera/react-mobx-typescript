@@ -1,25 +1,49 @@
 var webpack = require('webpack');
 var path = require('path');
 var WebpackNotifierPlugin = require('webpack-notifier');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    devtool: 'source-map',
-    entry: [
-        // Add the react hot loader entry point - in reality, you only want this in your dev Webpack config
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        'index.tsx'
-    ],
+
+    devtool: 'cheap-module-source-map',
+
+    entry: {
+        app: 'index.tsx',
+        vendor: ["mobx", "mobx-react", "react", "react-dom"]
+    },
+
     output: {
         filename: 'app.js',
-        publicPath: '/dist',
         path: path.resolve('dist')
     },
+
     resolve: {
         extensions: ['', '.ts', '.tsx', '.js', '.jsx'],
         modulesDirectories: ['src', 'node_modules']
     },
+
+    plugins: [
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.js"),
+        new webpack.NoErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            hash: true,
+            template: path.join(__dirname, 'assets/index.html'),
+            favicon: path.join(__dirname, 'assets/favicon.ico')
+        }),
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false
+            }
+        })
+    ],
+
     module: {
 
         preLoaders: [
@@ -30,10 +54,5 @@ module.exports = {
         loaders: [
             {test: /\.tsx?$/, loaders: ['babel', 'awesome-typescript-loader']}
         ]
-    },
-    plugins: [
-        // Add the Webpack HMR plugin so it will notify the browser when the app code changes
-        new webpack.HotModuleReplacementPlugin(),
-        new WebpackNotifierPlugin({alwaysNotify: true})
-    ]
+    }
 };

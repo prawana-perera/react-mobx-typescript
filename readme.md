@@ -35,5 +35,6 @@ Install TypeScript globally using this command:
 * https://github.com/mobxjs/mobx-react-typescript-boilerplate (A quick start)
 * http://blog.tomduncalf.com/posts/setting-up-typescript-and-react/#adding-hot-module-reloading (A comprehensive reference and most of the config used from this)
 * https://webpack.js.org/guides/production-build/ (Learn about how to optimise your webpack generated assets for production deployments)
+* https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code (Split JS bundles)
 * TBA
 
