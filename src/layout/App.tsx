@@ -1,8 +1,11 @@
 import * as React from "react";
-import Hello2 from "demo/Hello2";
+import Demo from "demo/components/Demo";
+import DemoStore from "demo/stores/DemoStore";
 import DevToolsWrapper from "./DevToolsWrapper";
 
-export interface AppProps {}
+export interface AppProps {
+}
+const demoStore = new DemoStore();
 
 export default class App extends React.Component<AppProps, undefined> {
 
@@ -10,7 +13,7 @@ export default class App extends React.Component<AppProps, undefined> {
         return (
             <div>
                 <h1>React, MobX, TypeScript</h1>
-                <Hello2 compiler="TypeScript" framework="React"/>
+                <Demo demoStore={demoStore} compiler="TypeScript" framework="React and MobX"/>
                 <DevToolsWrapper/>
             </div>
         );
