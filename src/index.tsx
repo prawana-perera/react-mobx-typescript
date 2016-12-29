@@ -15,7 +15,7 @@ const rootEl = document.getElementById('app');
 // And render our App into it, inside the HMR App container which handles the hot reloading
 render(
     <AppContainer>
-        <App title="React, MobX, TypeScript Demo" />
+        <App />
     </AppContainer>,
     rootEl
 );
