@@ -15,6 +15,7 @@ To meet the above goals, I am exploring the following libraries and frameworks:
 * TypeScript
 * WebPack
 * React Hot Loader and WebPack Dev Server
+* TBA - more as I learn and use them
 
 # Setup
 
