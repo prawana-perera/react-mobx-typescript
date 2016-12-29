@@ -30,6 +30,17 @@ Install TypeScript globally using this command:
 
 ```npm install -g typescript```
 
+## Run Application
+1. Clone the repository
+2. CD to directory
+3. Run `npm install`
+
+## Development Mode
+Run `npm start` to start the application in development mode. Then navigate to http://localhost:3000/.
+
+## Production Build
+Run `npm run build`. This will create the assets required to host the static site (i.e. in NginX, Apache etc). See the `dist` directory for the list of assets produced. These will need to be published to where ever you will be hosting the site from.
+
 # References
 * https://www.typescriptlang.org/docs/handbook/react-&-webpack.html (Get familiar with TS) 
 * https://github.com/mobxjs/mobx-react-typescript-boilerplate (A quick start)
