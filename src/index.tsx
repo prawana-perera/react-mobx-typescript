@@ -1,5 +1,6 @@
 import * as React from "react";
 import {render} from "react-dom";
+import { useStrict } from 'mobx';
 
 import App from "layout/App";
 
@@ -11,6 +12,8 @@ declare var module: {hot: any};
 
 // Get the root element from the HTML
 const rootEl = document.getElementById('app');
+
+useStrict(true);
 
 // And render our App into it, inside the HMR App container which handles the hot reloading
 render(

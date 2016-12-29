@@ -1,4 +1,4 @@
-import {observable} from 'mobx';
+import {observable, action} from "mobx";
 
 export default class DemoStore {
 
@@ -6,12 +6,18 @@ export default class DemoStore {
 
     constructor() {
         setInterval(() => {
-            this._timer += 1;
+            this.incrementTimer();
         }, 1000);
     }
 
+    @action
     resetTimer(): void {
         this._timer = 0;
+    }
+
+    @action
+    private incrementTimer(): void {
+        this._timer += 1;
     }
 
     get timer(): number {
