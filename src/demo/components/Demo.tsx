@@ -1,24 +1,29 @@
 import * as React from "react";
-import {observer} from 'mobx-react';
+import {observer, inject} from 'mobx-react';
 
-import DemoStore from "demo/stores/DemoStore";
+import {IAppStores} from  "config/createStores";
+import DemoStore from "../stores/DemoStore";
 
-export interface DemoProps {
+interface IDemoProps {
+    store?: DemoStore;
     compiler: string;
     framework: string;
-    demoStore: DemoStore;
 }
 
+@inject((stores: IAppStores) => ({store: stores.demoStore}))
 @observer
-export default class Demo extends React.Component<DemoProps, {}> {
+export default class Demo extends React.Component<IDemoProps, {}> {
 
     render() {
+
+        const {store, compiler, framework} = this.props;
+
         return (
             <div>
-                <h2>Hello from {this.props.compiler} and {this.props.framework}!</h2>
+                <h2>Hello from {compiler} and {framework}!</h2>
                 <div>
                     <button onClick={this.onReset}>
-                        Seconds passed: {this.props.demoStore.timer}
+                        SECONDS PASSED: {store.timer}
                     </button>
                 </div>
             </div>
@@ -26,6 +31,7 @@ export default class Demo extends React.Component<DemoProps, {}> {
     }
 
     onReset = () => {
-        this.props.demoStore.resetTimer();
+        const {store} = this.props;
+        store.resetTimer();
     }
 }

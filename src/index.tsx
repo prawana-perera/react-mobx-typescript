@@ -1,8 +1,10 @@
 import * as React from "react";
 import {render} from "react-dom";
-import { useStrict } from 'mobx';
+import {useStrict} from 'mobx';
+import {Provider} from 'mobx-react';
 
 import App from "layout/App";
+import createStores from "config/createStores";
 
 // Import the Hot Module Reloading App Container – more on why we use 'require' below
 const {AppContainer} = require('react-hot-loader');
@@ -15,10 +17,14 @@ const rootEl = document.getElementById('app');
 
 useStrict(true);
 
+const stores = createStores();
+
 // And render our App into it, inside the HMR App container which handles the hot reloading
 render(
     <AppContainer>
-        <App />
+        <Provider { ...stores }>
+            <App />
+        </Provider>
     </AppContainer>,
     rootEl
 );
@@ -32,7 +38,9 @@ if (module.hot) {
         // And render it into the root element again
         render(
             <AppContainer>
-                <NextApp />
+                <Provider { ...stores }>
+                    <NextApp />
+                </Provider>
             </AppContainer>,
             rootEl
         );
