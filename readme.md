@@ -49,6 +49,9 @@ Run `npm start` to start the application in development mode. Then navigate to h
 ## Production Build
 Run `npm run build`. This will create the assets required to host the static site (i.e. in NginX, Apache etc). See the `dist` directory for the list of assets produced. These will need to be published to where ever you will be hosting the site from.
 
+# Issues and TODOs
+* Hot reloading with react-router and react-hot-loader 3 seems to work but the following warning is seen in the console `browser.js:49 Warning: [react-router] You cannot change <Router routes>; it will be ignored`. Need to figure out whats going on.
+
 # References
 * https://www.typescriptlang.org/docs/handbook/react-&-webpack.html (Get familiar with TS) 
 * https://github.com/mobxjs/mobx-react-typescript-boilerplate (A quick start)
@@ -56,5 +59,6 @@ Run `npm run build`. This will create the assets required to host the static sit
 * https://webpack.js.org/guides/production-build/ (Learn about how to optimise your webpack generated assets for production deployments)
 * https://webpack.github.io/docs/code-splitting.html#split-app-and-vendor-code (Split JS bundles)
 * http://www.robinwieruch.de/mobx-react/ (a comprehensive example with React + MobX)
+* https://github.com/calesce/react-hot-loader-examples (Example of getting react-router to work with hot reloading)
 * TBA
 

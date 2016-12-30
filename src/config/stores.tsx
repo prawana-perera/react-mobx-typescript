@@ -4,10 +4,8 @@ export interface IAppStores {
     demoStore: DemoStore;
 }
 
-const createStores = (): IAppStores => {
+export const createStores = (): IAppStores => {
     return {
         demoStore: new DemoStore()
     }
 };
-
-export default createStores;
