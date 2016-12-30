@@ -50,7 +50,7 @@ Run `npm start` to start the application in development mode. Then navigate to h
 Run `npm run build`. This will create the assets required to host the static site (i.e. in NginX, Apache etc). See the `dist` directory for the list of assets produced. These will need to be published to where ever you will be hosting the site from.
 
 # Issues and TODOs
-* Hot reloading with react-router and react-hot-loader 3 seems to work but the following warning is seen in the console `browser.js:49 Warning: [react-router] You cannot change <Router routes>; it will be ignored`. Need to figure out whats going on.
+- [ ] Hot reloading with react-router and react-hot-loader 3 seems to work but the following warning is seen in the console `browser.js:49 Warning: [react-router] You cannot change <Router routes>; it will be ignored`. Need to figure out whats going on.
 
 # References
 * https://www.typescriptlang.org/docs/handbook/react-&-webpack.html (Get familiar with TS) 
