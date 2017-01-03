@@ -14,7 +14,8 @@ To meet the above goals, I am exploring the following libraries and frameworks:
 * MobX
 * TypeScript
 * WebPack
-* React Hot Loader and WebPack Dev Server
+* React Hot Loader 3 with WebPack Dev Server
+* josn-server to easily mock back-end API calls
 * TBA - more as I learn and use them
 
 # Setup
