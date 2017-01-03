@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Chair",
+      "price": "199.99"
+    },
+    {
+      "id": 1,
+      "title": "Table",
+      "price": "1000.95"
+    }
+  ]
+}

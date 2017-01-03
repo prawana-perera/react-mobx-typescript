@@ -6,7 +6,15 @@ new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+
+    proxy: {
+        "/api": {
+            target: "http://localhost:3001",
+            pathRewrite: {'^/api' : ''},
+            changeOrigin: true
+        }
+    }
 }).listen(3000, 'localhost', function (err, result) {
     if (err) {
         return console.log(err);

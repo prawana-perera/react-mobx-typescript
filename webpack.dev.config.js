@@ -27,6 +27,7 @@ module.exports = {
 
     plugins: [
         // Add the Webpack HMR plugin so it will notify the browser when the app code changes
+        new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
