@@ -1,22 +1,16 @@
 import {observable, action} from "mobx";
-import {get} from "axios";
+import {get, post} from "axios";
 
 export class Item {
 
-    private _id: number;
-    private _title: string;
-    private _price: number;
+    id: number;
+    title: string;
+    price: number;
 
-    get id(): number {
-        return this._id;
-    }
-
-    get title(): string {
-        return this._title;
-    }
-
-    get price(): number {
-        return this._price;
+    constructor(title: string, price: number) {
+        this.id = Math.random();
+        this.title = title;
+        this.price = price;
     }
 }
 
@@ -52,7 +46,7 @@ export default class DemoStore {
 
         get<Item[]>('/api/items')
             .then(result => this.onItemsFetched(result))
-            .catch(error => this.onItemFetchFail(error));
+            .catch(error => this.onApiCallFail(error));
     }
 
     @action
@@ -62,9 +56,23 @@ export default class DemoStore {
     }
 
     @action
-    private onItemFetchFail(error): void {
+    private onApiCallFail(error): void {
         this._loading = false;
         console.log(error);
+    }
+
+    @action
+    public addItem(item: Item): void {
+        this._loading = true;
+        post<Item>('/api/items', item)
+            .then(result => this.onItemAdded(result))
+            .catch(error => this.onApiCallFail(error));
+    }
+
+    @action
+    private onItemAdded(result): void {
+        this._items.push(result.data);
+        this._loading = false;
     }
 
     get items(): Item[] {
