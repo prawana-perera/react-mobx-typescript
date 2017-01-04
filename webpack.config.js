@@ -9,7 +9,7 @@ module.exports = {
 
     entry: {
         app: 'index.tsx',
-        vendor: ["mobx", "mobx-react", "react", "react-dom", "react-router"]
+        vendor: ["mobx", "mobx-react", "react", "react-dom", "react-router", "axios"]
     },
 
     output: {

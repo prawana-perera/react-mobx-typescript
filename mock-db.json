@@ -6,9 +6,14 @@
       "price": "199.99"
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "Table",
       "price": "1000.95"
+    },
+    {
+      "id": 3,
+      "title": "Desk",
+      "price": "99.99"
     }
   ]
 }

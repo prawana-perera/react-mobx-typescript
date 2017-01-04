@@ -1,8 +1,8 @@
 import * as React from "react";
-import {observer, inject} from 'mobx-react';
-
-import {IAppStores} from  "../../config/stores";
+import {observer, inject} from "mobx-react";
+import {IAppStores} from "../../config/stores";
 import DemoStore from "../stores/DemoStore";
+import ItemList from "./ItemList";
 
 interface IDemoProps {
     store?: DemoStore;
@@ -24,16 +24,17 @@ export default class Demo extends React.Component<IDemoProps, {}> {
                         SECONDS PASSED: {store.timer}
                     </button>
                 </div>
+                <h3>Items from REST call</h3>
+                <div>
+                    {store.loading ? (<h3>Loading Items</h3>) : (<ItemList items={store.items} />)}
+                </div>
             </div>
         );
     }
 
     componentDidMount() {
-        this.onReset();
-    }
-
-    componentWillUnmount() {
-
+        const {store} = this.props;
+        store.fetchItems();
     }
 
     onReset = () => {
