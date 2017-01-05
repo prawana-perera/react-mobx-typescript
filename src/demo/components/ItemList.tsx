@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Item} from "../stores/DemoStore";
 import ItemView from "./ItemView";
+import ItemInput from "./ItemInput";
 
 export interface ItemListProps {
     items: Item[];
@@ -15,11 +16,7 @@ const ItemList = (props: ItemListProps) => {
         <div>
             {props.items.map(item => <ItemView key={item.id} item={item}/>)}
             <h3>Add a new item</h3>
-            <div>
-                Title: <input id="title" name="title"/><br/>
-                Price: <input id="price" name="price"/><br/>
-                <button onClick={() => props.onAddItem(createItem("Abc", 12.99))}>Add</button>
-            </div>
+            <ItemInput onAddItem={props.onAddItem}/>
         </div>
     );
 
